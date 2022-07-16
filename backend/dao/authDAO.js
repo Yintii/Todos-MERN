@@ -20,7 +20,6 @@ export default class AuthDAO {
 
     static async login(username, password) {
         try {
-            console.log(username, password)
             let account = await users.find({
                 username: username
             }).toArray()
@@ -29,9 +28,12 @@ export default class AuthDAO {
 
             let match = bcrpyt.compareSync(password, account[0].password)
 
+            console.log("Match: ", match)
+
             if (match) {
                 token = JWT.sign(
                     {
+                        exp: Math.floor(Date.now() / 1000) + (60 * 60),
                         username: account[0].username
                     },
                     process.env.SECRET
