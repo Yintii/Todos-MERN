@@ -1,7 +1,7 @@
 import app from './server.js'
 import mongodb from "mongodb"
 import dotenv from "dotenv"
-// import TodosDAO from './dao/accountsDAO.js'
+import TodosDAO from './dao/todosDAO.js'
 import AuthDAO from './dao/authDAO.js'
 dotenv.config()
 
@@ -20,7 +20,7 @@ MongoClient.connect(
         process.exit(1)
     })
     .then(async client => {
-        // await TodosDAO.injectDB(client)
+        await TodosDAO.injectDB(client)
         await AuthDAO.injectDB(client)
         app.listen(port, () => {
             console.log(`Listening on port ${port}`)

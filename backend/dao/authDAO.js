@@ -34,7 +34,8 @@ export default class AuthDAO {
                 token = JWT.sign(
                     {
                         exp: Math.floor(Date.now() / 1000) + (60 * 60),
-                        username: account[0].username
+                        username: account[0].username,
+                        user_id: account[0]._id
                     },
                     process.env.SECRET
                 )
