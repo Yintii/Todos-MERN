@@ -55,6 +55,18 @@ export default class AuthDAO {
         NEED TO CREATE A REGISTRATION ROUTE AND HANDLER
     */
 
+    static async register(username, password) {
+        try {
+            let passwordHash = await bcrpyt.hash(password, 10)
+            console.log(passwordHash)
+
+            await users.insertOne({ username: username, password: passwordHash })
+            console.log("user successfully added to the database")
+        } catch (error) {
+            console.log("Unable to add user to the database: ", error);
+        }
+    }
+
     static async logout() {
         try {
             localStorage.removeItem("user")

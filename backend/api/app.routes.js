@@ -16,4 +16,6 @@ router.route("/login").post(AuthCtrl.apiPostLogin)
 
 router.route("/logout").get(AuthCtrl.apiGetLogout)
 
+router.route("/register").post(AuthCtrl.apiPostRegistration)
+
 export default router;

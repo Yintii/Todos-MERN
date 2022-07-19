@@ -1,5 +1,4 @@
 import mongodb from 'mongodb'
-import fetch from 'node-fetch'
 const ObjectId = mongodb.ObjectId;
 
 let todos
